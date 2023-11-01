@@ -5,6 +5,7 @@ using UnityEngine;
 public class player_movement : MonoBehaviour
 {
     [SerializeField] float PlayerSpeed = 5f;
+    [SerializeField] float RotateSpeed = 10f;
     private void Update()
     {
         Vector2 input = Vector2.zero;
@@ -30,7 +31,7 @@ public class player_movement : MonoBehaviour
         Vector3 moveDir = new Vector3(input.x, 0, input.y);
 
         transform.position += moveDir * PlayerSpeed * Time.deltaTime;
-
+        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * RotateSpeed);
         if (Input.GetKeyDown (KeyCode.Q))
         {
             Debug.Log("Recharging!");
@@ -39,5 +40,7 @@ public class player_movement : MonoBehaviour
         {
             Debug.Log("Switching item in hand");
         }
+
+
     }   
 }
