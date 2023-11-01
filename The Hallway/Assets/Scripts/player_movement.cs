@@ -31,6 +31,13 @@ public class player_movement : MonoBehaviour
 
         transform.position += moveDir * PlayerSpeed * Time.deltaTime;
 
-        Debug.Log(input);
+        if (Input.GetKeyDown (KeyCode.Q))
+        {
+            Debug.Log("Recharging!");
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("Switching item in hand");
+        }
     }   
 }
